@@ -1,0 +1,321 @@
+﻿{
+  "info": {
+    "name": "El Camino del Guardabarranco API",
+    "_postman_id": "8bdfe383-9190-444f-a500-2baf206e792d",
+    "description": "ColecciÃ³n completa de pruebas de la API REST 'El Camino del Guardabarranco' para Flutter y SQL Server.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "AutenticaciÃ³n",
+      "item": [
+        {
+          "name": "Login - Estudiante",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"alias\": \"josue_guardabarranco\",\n  \"contrasena\": \"Seguridad123!\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Registro - Nuevo Estudiante",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"alias\": \"estudiante_prueba_2026\",\n  \"contrasena\": \"Seguridad123!\",\n  \"nombreRol\": \"Estudiante\",\n  \"idGradoEscolar\": 1,\n  \"fechaNacimiento\": \"2016-01-01\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Perfil y Preferencias",
+      "item": [
+        {
+          "name": "Obtener Perfil",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/perfil/5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "perfil", "5"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar Preferencias Accesibilidad",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idUsuario\": 5,\n  \"altoContraste\": true,\n  \"lecturaVozActiva\": false,\n  \"tamanoFuente\": 3\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/perfil/preferencias",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "perfil", "preferencias"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Mapa y Cultura",
+      "item": [
+        {
+          "name": "Listar Departamentos (17)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/mapa/departamentos/5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mapa", "departamentos", "5"]
+            }
+          }
+        },
+        {
+          "name": "Listar Municipios de Managua",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/mapa/municipios/1?idUsuario=5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mapa", "municipios", "1"],
+              "query": [{ "key": "idUsuario", "value": "5" }]
+            }
+          }
+        },
+        {
+          "name": "Contenido Cultural Masaya",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/cultura/municipio/5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "cultura", "municipio", "5"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Retos y Progreso",
+      "item": [
+        {
+          "name": "Retos en Managua",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/retos/municipio/1?idUsuario=5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "retos", "municipio", "1"],
+              "query": [{ "key": "idUsuario", "value": "5" }]
+            }
+          }
+        },
+        {
+          "name": "Preguntas del Reto 1",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/retos/1/preguntas",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "retos", "1", "preguntas"]
+            }
+          }
+        },
+        {
+          "name": "Registrar Intento de Pregunta",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idUsuario\": 5,\n  \"idReto\": 1,\n  \"idPregunta\": 1,\n  \"idOpcionSeleccionada\": 33,\n  \"tiempoRespuestaSegundos\": 4,\n  \"idDispositivoOrigen\": \"Postman-Test\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/progreso/intento",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "progreso", "intento"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "GamificaciÃ³n y Tienda",
+      "item": [
+        {
+          "name": "Consultar Nivel y Barra XP",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/gamificacion/nivel/5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "gamificacion", "nivel", "5"]
+            }
+          }
+        },
+        {
+          "name": "Ranking / Leaderboard",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/gamificacion/ranking?top=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "gamificacion", "ranking"],
+              "query": [{ "key": "top", "value": "20" }]
+            }
+          }
+        },
+        {
+          "name": "Evaluar Insignias",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/api/gamificacion/evaluar-insignias/5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "gamificacion", "evaluar-insignias", "5"]
+            }
+          }
+        },
+        {
+          "name": "ArtÃ­culos de la Tienda",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/tienda/items/5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tienda", "items", "5"]
+            }
+          }
+        },
+        {
+          "name": "Comprar ArtÃ­culo Tienda",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idUsuario\": 5,\n  \"idItem\": 3\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tienda/comprar",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tienda", "comprar"]
+            }
+          }
+        },
+        {
+          "name": "Avatares Disponibles",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/avatares/5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "avatares", "5"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Docentes y Padres",
+      "item": [
+        {
+          "name": "Grupos del Docente",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/docente/grupos/2",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "docente", "grupos", "2"]
+            }
+          }
+        },
+        {
+          "name": "Crear Grupo Escolar",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idDocente\": 2,\n  \"nombre\": \"6to Grado C - Los Sacuanjoches\",\n  \"idGradoEscolar\": 3,\n  \"codigoAcceso\": \"6TOC-SAC\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/docente/grupos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "docente", "grupos"]
+            }
+          }
+        },
+        {
+          "name": "Progreso de Hijos del Padre",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/padre/hijos/3",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "padre", "hijos", "3"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "SincronizaciÃ³n Offline",
+      "item": [
+        {
+          "name": "Sync Pull (Descarga SQLite)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/sync/pull?fechaDesde=2026-01-01",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "sync", "pull"],
+              "query": [{ "key": "fechaDesde", "value": "2026-01-01" }]
+            }
+          }
+        },
+        {
+          "name": "Sync Push (Subida SQLite)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idUsuario\": 5,\n  \"idDispositivoOrigen\": \"Flutter-Offline\",\n  \"intentos\": [\n    {\n      \"idReto\": 1,\n      \"idPregunta\": 2,\n      \"idOpcion\": 37,\n      \"fechaIntento\": \"2026-08-28T18:00:00Z\",\n      \"tiempoRespuestaSegundos\": 5\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/sync/push",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "sync", "push"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5128"
+    }
+  ]
+}

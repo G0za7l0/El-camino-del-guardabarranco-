@@ -1,0 +1,6 @@
+@ElCaminoGuardabarranco.API_HostAddress = http://localhost:5128
+
+GET {{ElCaminoGuardabarranco.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
