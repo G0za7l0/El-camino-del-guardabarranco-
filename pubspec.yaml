@@ -1,0 +1,30 @@
+name: el_camino_del_guardabarranco
+description: "El Camino del Guardabarranco - App educativa sobre Nicaragua"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  http: ^1.6.0
+  audioplayers: ^6.7.1
+  flutter_tts: ^4.2.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/branding/
+    - assets/characters/
+    - assets/backgrounds/
+    - assets/map/
+    - assets/games/
